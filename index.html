@@ -1,0 +1,701 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Fix it or break it!</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1a0e26ac-8f22-8016-a3ad-d3db068873d0" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/chart-mixed_pink.svg"/></div><h1 class="page-title">Fix it or break it!</h1><p class="page-description"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><h3 id="1a0e26ac-8f22-8061-93cb-dc6ad2ac2e99" class="">Submission by: Ujwal Jibhkate (ujibhkat@iu.edu)</h3><p id="1a0e26ac-8f22-80be-bc93-c17b72eb5269" class="">
+</p><h1 id="1a0e26ac-8f22-8084-af17-e669b1a84d5e" class=""><strong>The Challenger Shuttle O-Ring Charts (1986)</strong></h1><h2 id="1a0e26ac-8f22-802b-ad59-fb4e1f5d27ce" class=""><strong>A Catastrophic Failure in Data Communication</strong></h2><p id="1a0e26ac-8f22-806a-9ec7-d9f2c17931be" class="">
+</p><p id="1a0e26ac-8f22-80cd-a6ff-fa08821da95e" class="">The Challenger Space Shuttle disaster is a key case study in engineering ethics, organizational communication, and failures in data visualization. The misrepresentation of O-ring data during pre-launch discussions highlights how ineffective graphical communication can lead to serious consequences. This analysis examines historical records, NASA reports, and academic studies to explore these visualization errors and their impact.</p><p id="1a0e26ac-8f22-8008-a2bc-fc0bab71620a" class="">
+</p><h2 id="1a0e26ac-8f22-8011-a27e-e62424104d99" class="">So, what are we talking about?</h2><h3 id="1a0e26ac-8f22-801d-80dd-d6c0850c5ee8" class="">Background</h3><p id="1a0e26ac-8f22-808d-a4a6-ce73a6ea80ff" class="">On January 28, 1986, the Challenger Shuttle launch ended in tragedy, claiming the lives of all seven crew members and deeply affecting their families, NASA, and the nation. While it is widely known that the disaster was caused by the failure of the O-ring—a gasket sealing the right booster—fewer people are aware of the flawed graph that influenced engineers’ decision to proceed with the launch.</p><h2 id="1a0e26ac-8f22-80bf-94ed-c1752b317358" class="">So, what visualization are we talking about?</h2><p id="1a0e26ac-8f22-80df-bd50-da56ccfb8493" class="">
+</p><figure id="1a0e26ac-8f22-803c-81d9-d22718325748" class="image"><a href="image.png"><img style="width:709.984375px" src="image.png"/></a></figure><p id="1a0e26ac-8f22-80c0-a684-d2cffd0d6d3e" class="">
+</p><h2 id="1a0e26ac-8f22-80f2-91b1-e369226a8fde" class="">Visualization Failure: Explained</h2><h3 id="1a0e26ac-8f22-80e6-a52c-f0f4e37bee06" class="">Data Presentation Faults</h3><p id="1a0e26ac-8f22-8024-b5d9-c2937ee7ef14" class="">Before the launch, engineers at Morton Thiokol—the contractor responsible for the solid rocket boosters (SRBs)—had data indicating that cold temperatures could compromise the O-rings&#x27; resilience. The presentation of this crucial information to NASA decision-makers, however, was deeply flawed. On January 27, 1986, Morton Thiokol engineers presented three key charts:</p><ol type="1" id="1a0e26ac-8f22-80f6-b94e-fa0f53080920" class="numbered-list" start="1"><li>A scatterplot showing O-ring erosion incidents versus launch temperatures</li></ol><ol type="1" id="1a0e26ac-8f22-80fe-9b79-e520840aba3c" class="numbered-list" start="2"><li>A historical record of O-ring damage across shuttle missions</li></ol><ol type="1" id="1a0e26ac-8f22-8017-833a-d2b5f7148c2d" class="numbered-list" start="3"><li>A binary &quot;good/no good&quot; classification of O-ring performance</li></ol><p id="1a0e26ac-8f22-80cb-8fe2-f6d601faa13a" class="">The primary scatterplot (Exhibit 1) showed seven data points, plotting O-ring damage against launch temperatures from 53°F to 81°F. This visualization suffered from three critical flaws:</p><ul id="1a0e26ac-8f22-800c-8c4e-eed1e2cd46c1" class="bulleted-list"><li style="list-style-type:disc"><strong>Incomplete Temperature Range:</strong> The chart excluded all launches below 53°F, creating a misleading extrapolation. The planned launch temperature of 31°F fell well outside the dataset&#x27;s range.</li></ul><ul id="1a0e26ac-8f22-8056-864c-d20b748077d6" class="bulleted-list"><li style="list-style-type:disc"><strong>Lack of Statistical Analysis:</strong> Despite a strong negative correlation (r = -0.76) between temperature and O-ring damage, the chart included no regression line or confidence intervals.</li></ul><ul id="1a0e26ac-8f22-801a-9601-d32d82b8dc3a" class="bulleted-list"><li style="list-style-type:disc"><strong>Binary Classification Oversight:</strong> The simplistic &quot;erosion&quot; versus &quot;no erosion&quot; categories failed to capture varying degrees of damage. For instance, Mission STS-61C—launched just seven days earlier at 58°F—showed significant soot blow-by yet was labeled &quot;acceptable.&quot;</li></ul><p id="1a0e26ac-8f22-8097-956b-f8c49d5f50e8" class="">
+</p><h2 id="1a0e26ac-8f22-8058-a20b-d5800da4e458" class="">Misinterpretation</h2><p id="1a0e26ac-8f22-8009-8ff8-edf6ed090d37" class="">NASA managers misinterpreted the charts for three key reasons:</p><ul id="1a0e26ac-8f22-80c7-bb9b-c2e853057395" class="bulleted-list"><li style="list-style-type:disc"><strong>False Equivalence:</strong> They incorrectly assumed that data from launches at 53°F could predict performance at 31°F, even though they had no data for such low temperatures.</li></ul><ul id="1a0e26ac-8f22-8062-8dc3-c3fdde335729" class="bulleted-list"><li style="list-style-type:disc"><strong>Visual Clutter:</strong> The charts combined different types of O-ring damage in a confusing way, obscuring important patterns in the data.</li></ul><ul id="1a0e26ac-8f22-8016-910b-fb85cec9cccc" class="bulleted-list"><li style="list-style-type:disc"><strong>Missing Uncertainty:</strong> Without probabilistic models, decision-makers couldn&#x27;t properly assess the risks of launching at untested low temperatures.</li></ul><p id="1a0e26ac-8f22-80a9-907a-cfaee1cd5261" class="">A later analysis using LOESS regression showed the gravity of this oversight—there was an <strong>89% probability of O-ring failure at 36°F</strong>.</p><p id="1a0e26ac-8f22-8091-8d1a-fffdce87ef2d" class="">
+</p><h2 id="1a0e26ac-8f22-8098-9555-fa8144790a44" class="">INTENT vs IMPACT</h2><h3 id="1a0e26ac-8f22-801d-b1a5-c145094feff6" class=""><strong>Engineering Intentions</strong></h3><p id="1a0e26ac-8f22-8079-92eb-cc4d6456e253" class="">Morton Thiokol engineers did not deliberately mislead decision-makers—they simply struggled to communicate the risks effectively:</p><ul id="1a0e26ac-8f22-8013-8b05-ce4dc04bf79b" class="bulleted-list"><li style="list-style-type:disc">The engineers designed their charts to show how temperature affected O-ring performance.</li></ul><ul id="1a0e26ac-8f22-803a-964c-d2c7f51688fd" class="bulleted-list"><li style="list-style-type:disc">Due to the rushed 11-hour meeting, they had to skip thorough statistical analysis.</li></ul><ul id="1a0e26ac-8f22-80dc-8512-e30e2de3c246" class="bulleted-list"><li style="list-style-type:disc">They wrongly assumed NASA&#x27;s technical team would understand the dangers of extrapolating beyond the available data.</li></ul><h3 id="1a0e26ac-8f22-80b7-a43f-e081850de6be" class=""><strong>Management Pressures</strong></h3><p id="1a0e26ac-8f22-80d2-9d71-d06a8ef310e1" class="">Several organizational issues at NASA made these communication problems worse:</p><ul id="1a0e26ac-8f22-8026-8b61-cdc875227760" class="bulleted-list"><li style="list-style-type:disc"><strong>Normalization of Deviance:</strong> By repeatedly labeling O-ring damage as &quot;acceptable,&quot; NASA had grown numb to the risks.</li></ul><ul id="1a0e26ac-8f22-80ec-a551-f63b13517ff8" class="bulleted-list"><li style="list-style-type:disc"><strong>Schedule Pressure:</strong> After six delays and growing pressure from Congress, there was intense urgency to launch.</li></ul><ul id="1a0e26ac-8f22-802c-b250-ffd28a5965b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Hierarchical Barriers:</strong> The engineers had to present their findings to managers three levels removed from hands-on technical work, making it harder to convey complex risks.</li></ul><p id="1a0e26ac-8f22-8014-b992-cc916446cd45" class="">
+</p><h1 id="1a0e26ac-8f22-80d4-af79-f32378db654a" class="">How could have they Avoided(FIXED) the visualization?</h1><p id="1a0e26ac-8f22-8053-ae73-c35993b5c120" class="">
+</p><p id="1a0e26ac-8f22-8030-8387-fc49464c83eb" class="">My Code: <a href="https://colab.research.google.com/drive/1U9AQavc9gSaS_MZQK3xpFf9rJRVgG80N?usp=sharing">https://colab.research.google.com/drive/1U9AQavc9gSaS_MZQK3xpFf9rJRVgG80N?usp=sharing</a></p><p id="1a0e26ac-8f22-8049-8096-f62bcb6c8014" class="">
+</p><h2 id="1a0e26ac-8f22-806d-b103-d61f8e062986" class="">1. Consider More Data:</h2><figure id="1a0e26ac-8f22-8066-bb73-fbb4e58e9106" class="image"><a href="image%201.png"><img style="width:709.984375px" src="image%201.png"/></a></figure><p id="1a0e26ac-8f22-80c9-a00a-ca8e1753635e" class="">
+</p><p id="1a0e26ac-8f22-8078-9f2e-ee9978838daf" class="">This visualization shows more content and information than original plot with just 7 points</p><p id="1a0e26ac-8f22-80ab-8e12-fceeb480c744" class="">
+</p><h2 id="1a0e26ac-8f22-8043-944f-dffa361c2eb6" class="">2. Removing The Outlier</h2><figure id="1a0e26ac-8f22-8098-8533-e7f83fbc194d" class="image"><a href="image%202.png"><img style="width:709.984375px" src="image%202.png"/></a></figure><p id="1a0e26ac-8f22-8045-a1a9-deb65c2160b1" class="">
+</p><h2 id="1a0e26ac-8f22-80b6-8c85-c222c799045d" class="">3. Find Correlation:</h2><p id="1a0e26ac-8f22-8067-8f45-c7ca773636e6" class="">Correlation between temperature and damaged O-rings: <em><strong><span style="border-bottom:0.05em solid">-0.6384574345662327</span></strong></em> (This is according to the data that I could find, in above paragraphs, I have provided the correlation as-<em><strong><span style="border-bottom:0.05em solid">0.76</span></strong></em>, this is based on the references)</p><p id="1a0e26ac-8f22-80bc-9dd3-c72a88fd7eb2" class=""><strong><span style="border-bottom:0.05em solid">It is negative! This one metric itself could have avoided the Problem.</span></strong></p><p id="1a0e26ac-8f22-80c7-874c-cd1c6f770502" class="">
+</p><h2 id="1a0e26ac-8f22-809d-9948-de65f4ccd0a4" class="">4. Simple Regression Line showing this Negative Correlation/Trend!</h2><p id="1a0e26ac-8f22-80c0-805f-d331e75c2785" class="">
+</p><figure id="1a0e26ac-8f22-808f-9a46-fad0ca679fcd" class="image"><a href="image%203.png"><img style="width:709.984375px" src="image%203.png"/></a></figure><p id="1a0e26ac-8f22-803e-b866-e5d261600b00" class="">
+</p><h1 id="1a0e26ac-8f22-802e-afdb-c63b4ff35581" class="">Conclsion</h1><p id="1a0e26ac-8f22-80eb-8707-f703a28717e7" class="">These historical cases reveal the dual nature of data visualization—while it can powerfully convey truth, it can also distort reality. To prevent such risks,  <strong>graphical literacy remains crucial</strong>. Studying visualization failures helps people develop the critical skills to spot misleading graphics and champion transparent, data-driven decision-making.</p><h2 id="1a0e26ac-8f22-8095-bd80-e568d1a7b74d" class="">References:</h2><ul id="1a0e26ac-8f22-80bb-b523-fa89538ae8c2" class="bulleted-list"><li style="list-style-type:disc"><a href="https://medium.com/habits-for-success/the-challenger-disaster-a-lesson-in-the-power-of-data-analysis-and-visualization-398d2ac8f59b">https://medium.com/habits-for-success/the-challenger-disaster-a-lesson-in-the-power-of-data-analysis-and-visualization-398d2ac8f59b</a></li></ul><ul id="1a0e26ac-8f22-80ba-a623-f496cb3b8b6c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.luzmo.com/blog/bad-data-visualization?utm_source=chatgpt.com">https://www.luzmo.com/blog/bad-data-visualization?utm_source=chatgpt.com</a></li></ul><ul id="1a0e26ac-8f22-806d-a73c-d807309a5974" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.nasa.gov/history/rogersrep/v1ch6.htm">Nasa Official Documentations</a></li></ul><ul id="1a0e26ac-8f22-8075-bdfe-efbfc9d6571e" class="bulleted-list"><li style="list-style-type:disc"><a href="https://eagereyes.org/blog/2011/tufte-and-the-truth-about-the-challenger">https://eagereyes.org/blog/2011/tufte-and-the-truth-about-the-challenger</a></li></ul><ul id="1a0e26ac-8f22-8099-a5cb-d99c7143ba43" class="bulleted-list"><li style="list-style-type:disc"><a href="https://en.wikipedia.org/wiki/Space_Shuttle_Challenger_disaster">https://en.wikipedia.org/wiki/Space_Shuttle_Challenger_disaster</a></li></ul><ul id="1a0e26ac-8f22-8080-903f-c0a96f7ebe77" class="bulleted-list"><li style="list-style-type:disc"><a href="https://byuistats.github.io/Statistics-Notebook/Analyses/Logistic%20Regression/Examples/challengerLogisticReg.html">https://byuistats.github.io/Statistics-Notebook/Analyses/Logistic%20Regression/Examples/challengerLogisticReg.html</a></li></ul><ul id="1a0e26ac-8f22-809e-8dcc-c33f8706f445" class="bulleted-list"><li style="list-style-type:disc">Data : <a href="https://www.openintro.org/data/index.php?data=orings">https://www.openintro.org/data/index.php?data=orings</a></li></ul><ul id="1a0e26ac-8f22-8055-9f6d-fb33b5266dd4" class="bulleted-list"><li style="list-style-type:disc">GenAI tools for initial research and code debugging</li></ul><p id="1a0e26ac-8f22-8062-90cb-df2d4f3ac89c" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
